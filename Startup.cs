@@ -26,6 +26,19 @@ namespace OdeToFood
             //     app.UseDeveloperExceptionPage();
             // }
 
+            // Demo a sample middleware
+            // IApplicationBuilder.Use(Func<RequestDelegate, RequestDelegate> middleware)
+            // A RequestDelegate takes in a "HttpContext" and returns a Task 
+            // - this Task would either write to the response or call the "next" middleware delegate
+            app.Use(
+                // RequestDelegate in argument
+                next => {
+                    // RequestDelegate return 
+                    return context => {
+                        return new Task(() => Console.WriteLine(""));
+                };
+            });
+
             app.UseWelcomePage(new WelcomePageOptions {
                 Path = "/wp"
             });
