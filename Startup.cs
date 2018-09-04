@@ -21,36 +21,14 @@ namespace OdeToFood
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, IConfiguration configuration)
         {
-            // if (env.IsDevelopment())
-            // {
-            //     app.UseDeveloperExceptionPage();
-            // }
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
 
-            // Demo a sample middleware
-            // IApplicationBuilder.Use(Func<RequestDelegate, RequestDelegate> middleware)
-            // A RequestDelegate takes in a "HttpContext" and returns a Task 
-            // - this Task would either write to the response or call the "next" middleware delegate
-            app.Use(
-                // RequestDelegate in argument
-                next => {
-                    // RequestDelegate return 
-                    return async context => {
-                        if (context.Request.Path.StartsWithSegments("/mym"))
-                        {
-                            // pipeline terminates and reverses here
-                            await context.Response.WriteAsync("My middleware hit!");
-                        } 
-                        else 
-                        {
-                            // pipeline continues to next middleware
-                            await next(context);    
-                        }
-                };
-            });
-
-            app.UseWelcomePage(new WelcomePageOptions {
-                Path = "/wp"
-            });
+            // app.UseDefaultFiles();
+            // app.UseStaticFiles();
+            app.UseFileServer();
 
             app.Run(async (context) =>
             {
