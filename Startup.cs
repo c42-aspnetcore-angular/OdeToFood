@@ -34,8 +34,17 @@ namespace OdeToFood
                 // RequestDelegate in argument
                 next => {
                     // RequestDelegate return 
-                    return context => {
-                        return new Task(() => Console.WriteLine(""));
+                    return async context => {
+                        if (context.Request.Path.StartsWithSegments("/mym"))
+                        {
+                            // pipeline terminates and reverses here
+                            await context.Response.WriteAsync("My middleware hit!");
+                        } 
+                        else 
+                        {
+                            // pipeline continues to next middleware
+                            await next(context);    
+                        }
                 };
             });
 
