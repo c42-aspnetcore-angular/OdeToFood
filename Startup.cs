@@ -26,7 +26,9 @@ namespace OdeToFood
             //     app.UseDeveloperExceptionPage();
             // }
 
-            app.UseWelcomePage();
+            app.UseWelcomePage(new WelcomePageOptions {
+                Path = "/wp"
+            });
 
             app.Run(async (context) =>
             {
