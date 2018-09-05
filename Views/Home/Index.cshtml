@@ -1,4 +1,4 @@
-@model OdeToFood.Models.Restaurant
+@model IEnumerable<OdeToFood.Models.Restaurant>
 
 <!DOCTYPE html>
 <html>
@@ -9,7 +9,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-    <h1>@Model.Name</h1>
-    <h2>Restaurant id is: @Model.Id</h2>
+    <table>
+        @foreach(var r in Model)
+        {
+            <tr>
+                <td>@r.Id</td><td>@r.Name</td>
+            </tr>
+        }
+    </table>
 </body>
 </html>
