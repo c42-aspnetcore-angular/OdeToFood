@@ -43,6 +43,7 @@ namespace OdeToFood.Controllers
             return View();
         }
 
+        [HttpPost]
         public IActionResult Create(RestaurantEditModel model)
         {
             var restaurant = new Restaurant
@@ -53,7 +54,7 @@ namespace OdeToFood.Controllers
 
             var newRestaurant = _restaurantData.Add(restaurant);
 
-            return View("Details", newRestaurant);
+            return RedirectToAction("Details", new { Id = newRestaurant.Id });
         }
     }
 }
