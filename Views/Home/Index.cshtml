@@ -7,8 +7,11 @@
         <tr>
             <td>@r.Id</td>
             <td>@r.Name</td>
-            <td><a href="home/details/@r.Id">Details(Anchor tag)</a></td>
-            <td>@Html.ActionLink("Go (Html.ActionLink)", "Details", new {Id = @r.Id})</td>
+            <td>
+                <a href="home/details/@r.Id">Details (Anchor tag)</a>
+                @Html.ActionLink("Go (Html.ActionLink)", "Details", new {Id = @r.Id})
+                <a asp-action="Details" asp-route-id="@r.Id">More (tag helper)</a>
+            </td>
         </tr>
     }
 </table>
