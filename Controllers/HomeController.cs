@@ -37,9 +37,23 @@ namespace OdeToFood.Controllers
             return View(model);
         }
 
+        [HttpGet]
         public IActionResult Create()
         {
             return View();
+        }
+
+        public IActionResult Create(RestaurantEditModel model)
+        {
+            var restaurant = new Restaurant
+            {
+                Name = model.Name,
+                Cuisine = model.Cuisine
+            };
+
+            var newRestaurant = _restaurantData.Add(restaurant);
+
+            return View("Details", newRestaurant);
         }
     }
 }
