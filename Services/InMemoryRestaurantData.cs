@@ -19,6 +19,11 @@ namespace OdeToFood.Services
             return _restaurants.OrderBy(r => r.Name);
         }
 
+        public Restaurant Get(int id)
+        {
+            return this._restaurants.FirstOrDefault(r => r.Id == id);
+        }
+
         private IEnumerable<Restaurant> _restaurants;
     }
 }

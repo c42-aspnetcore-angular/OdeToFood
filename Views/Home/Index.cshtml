@@ -1,21 +1,14 @@
-@model IEnumerable<OdeToFood.Models.Restaurant>
+@model OdeToFood.ViewModels.IndexViewModel
 
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Page Title</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
-<body>
-    <table>
-        @foreach(var r in Model)
-        {
-            <tr>
-                <td>@r.Id</td><td>@r.Name</td>
-            </tr>
-        }
-    </table>
-</body>
-</html>
+<h1>@Model.MessageOfTheDay</h1>
+<table>
+    @foreach(var r in Model.Restaurants)
+    {
+        <tr>
+            <td>@r.Id</td>
+            <td>@r.Name</td>
+            <td><a href="home/details/@r.Id">Details(Anchor tag)</a></td>
+            <td>@Html.ActionLink("Go (Html.ActionLink)", "Details", new {Id = @r.Id})</td>
+        </tr>
+    }
+</table>

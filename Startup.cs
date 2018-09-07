@@ -20,6 +20,7 @@ namespace OdeToFood
         {
             services.AddMvc();
             services.AddScoped<IRestaurantData, InMemoryRestaurantData>();
+            services.AddSingleton<IGreetService, GreetService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
