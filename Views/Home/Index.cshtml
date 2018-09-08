@@ -1,6 +1,11 @@
 @model OdeToFood.ViewModels.IndexViewModel
 
-<h1>@Model.MessageOfTheDay</h1>
+@{ 
+    ViewBag.Title = "Index Page";
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>All Restaurants</h1>
 <table>
     @foreach(var r in Model.Restaurants)
     {
@@ -16,3 +21,7 @@
     }
 </table>
 <a asp-action="Create">Add Restaurants</a>
+
+@section footer {
+    @Model.MessageOfTheDay
+}
