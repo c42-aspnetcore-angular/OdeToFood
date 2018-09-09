@@ -1,0 +1,9 @@
+﻿@page
+
+@inject IGreetService GreetService
+
+<div>@GreetService.GetMessageOfTheDay()</div>
+
+@section footer {
+    "Footer from Greeting Razor Page!"
+}
