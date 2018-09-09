@@ -1,8 +1,8 @@
-﻿@page
+﻿@page "{name?}"
 
-@inject IGreetService GreetService
+@model GreetingModel
 
-<div>@GreetService.GetMessageOfTheDay()</div>
+<div>@Model.CurrentGreeting</div>
 
 @section footer {
     "Footer from Greeting Razor Page!"
