@@ -5,6 +5,7 @@
 
 <h1>Edit @Model.Restaurant</h1>
 <form method="post">
+    <input type="hidden" asp-for="@Model.Restaurant.Id" />
     <div>
         <label asp-for="@Model.Restaurant.Name"></label>
         <input asp-for="@Model.Restaurant.Name">
