@@ -9,6 +9,9 @@
     <div>
         @RenderBody()
     </div>
-    <footer>@RenderSection("footer", required: false)</footer>
+    <footer>
+        @RenderSection("footer", required: false)
+        @await Component.InvokeAsync("Greeter")
+    </footer>
 </body>
 </html>
